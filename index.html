@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Quarterly Accomplishment of ILCDB Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --secondary: #3B82F6;
+            --accent: #F97316;
+            --highlight: #06B6D4;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f1f5f9;
+            background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(249, 115, 22, 0.05) 0px, transparent 50%);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+        }
+        .card-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .womens-month-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="text-slate-900 antialiased pb-12">
+
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center space-x-2">
+                <div class="bg-blue-600 p-1.5 rounded-lg">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <span class="font-extrabold text-xl text-blue-900 tracking-tight">ILCDB <span class="text-blue-500 font-medium">| Project Audit</span></span>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-full border border-blue-100 uppercase tracking-widest">Q1 2026 REPORT</span>
+                <span class="text-slate-400">|</span>
+                <span class="text-sm text-slate-500 font-medium italic">Status: Final Review</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    
+    <!-- Hero Section -->
+    <header class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="max-w-3xl">
+            <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                2026 Quarterly <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Accomplishment</span> of ILCDB Project
+            </h1>
+            <p class="mt-4 text-slate-600 text-lg leading-relaxed">
+                Detailed analysis of digital literacy initiatives, regional reach, and gender-inclusive ICT training outcomes for the first quarter of 2026 for Bicol Region for January - March 2026.
+            </p>
+        </div>
+        <div class="flex flex-col items-end">
+             <div class="flex -space-x-2 mb-2">
+                <div title="Camarines Sur" class="w-10 h-10 rounded-full border-2 border-white bg-blue-500 flex items-center justify-center text-white text-xs font-bold cursor-help">CS</div>
+                <div title="Albay" class="w-10 h-10 rounded-full border-2 border-white bg-orange-500 flex items-center justify-center text-white text-xs font-bold cursor-help">AL</div>
+                <div title="Sorsogon" class="w-10 h-10 rounded-full border-2 border-white bg-cyan-500 flex items-center justify-center text-white text-xs font-bold cursor-help">SR</div>
+                <div title="Masbate" class="w-10 h-10 rounded-full border-2 border-white bg-purple-500 flex items-center justify-center text-white text-xs font-bold cursor-help">MS</div>
+                <div title="Catanduanes" class="w-10 h-10 rounded-full border-2 border-white bg-rose-500 flex items-center justify-center text-white text-xs font-bold cursor-help">CT</div>
+                <div title="Camarines Norte" class="w-10 h-10 rounded-full border-2 border-white bg-emerald-500 flex items-center justify-center text-white text-xs font-bold cursor-help">CN</div>
+             </div>
+             <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Verified Operations Team</p>
+             <div class="mt-1 text-right">
+                <span class="text-[9px] font-medium text-slate-500 block">Camarines Sur • Albay • Sorsogon</span>
+                <span class="text-[9px] font-medium text-slate-500 block">Masbate • Catanduanes • Camarines Norte</span>
+             </div>
+        </div>
+    </header>
+
+    <!-- Key Metrics Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <!-- Metric 1 -->
+        <div class="card-glass rounded-3xl p-6 relative overflow-hidden">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-blue-500/5 rounded-full"></div>
+            <div class="stat-icon bg-blue-100 text-blue-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            </div>
+            <p class="text-sm font-bold text-slate-500 uppercase tracking-wider">Total Trainings</p>
+            <h3 class="text-4xl font-black text-slate-900 mt-1">60</h3>
+            <p class="text-xs text-blue-600 font-bold mt-2 flex items-center">
+                <span class="mr-1">↑</span> Target Exceeded
+            </p>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="card-glass rounded-3xl p-6 relative overflow-hidden">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-emerald-500/5 rounded-full"></div>
+            <div class="stat-icon bg-emerald-100 text-emerald-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <p class="text-sm font-bold text-slate-500 uppercase tracking-wider">Beneficiaries</p>
+            <h3 class="text-4xl font-black text-slate-900 mt-1">5,406</h3>
+            <p class="text-xs text-emerald-600 font-bold mt-2">Successful completions</p>
+        </div>
+
+        <!-- Metric 3 -->
+        <div class="card-glass rounded-3xl p-6 relative overflow-hidden">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-orange-500/5 rounded-full"></div>
+            <div class="stat-icon bg-orange-100 text-orange-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </div>
+            <p class="text-sm font-bold text-slate-500 uppercase tracking-wider">Regional Coverage</p>
+            <h3 class="text-4xl font-black text-slate-900 mt-1">100%</h3>
+            <p class="text-xs text-orange-600 font-bold mt-2">All 6 Provinces active</p>
+        </div>
+
+        <!-- Metric 4 -->
+        <div class="card-glass rounded-3xl p-6 relative overflow-hidden">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-purple-500/5 rounded-full"></div>
+            <div class="stat-icon bg-purple-100 text-purple-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <p class="text-sm font-bold text-slate-500 uppercase tracking-wider">National Women's Month</p>
+            <h3 class="text-4xl font-black text-slate-900 mt-1">3.6k</h3>
+            <p class="text-xs text-purple-600 font-bold mt-2">Special Campaign Impact</p>
+        </div>
+    </section>
+
+    <!-- Main Visuals -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+        <!-- Modality Chart -->
+        <div class="card-glass rounded-3xl p-6 lg:col-span-1">
+            <h4 class="font-bold text-slate-800 mb-6 flex items-center">
+                <span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span> Training Modality Breakdown
+            </h4>
+            <div class="chart-container">
+                <canvas id="modalityChart"></canvas>
+            </div>
+            <div class="mt-6 space-y-3">
+                <div class="flex items-center justify-between p-3 bg-blue-50/50 rounded-2xl border border-blue-100/50">
+                    <span class="text-sm font-semibold text-slate-600">Online</span>
+                    <span class="text-sm font-black text-blue-700">37 Sessions</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-orange-50/50 rounded-2xl border border-orange-100/50">
+                    <span class="text-sm font-semibold text-slate-600">Face-to-Face</span>
+                    <span class="text-sm font-black text-orange-700">23 Sessions</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Geo Distribution -->
+        <div class="card-glass rounded-3xl p-6 lg:col-span-2">
+             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                <h4 class="font-bold text-slate-800 flex items-center">
+                    <span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span> Distribution per Province (Bicol Region)
+                </h4>
+                <div class="px-3 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-full border border-slate-200">FINAL Q1 CONDUCT DATA</div>
+             </div>
+             
+             <!-- Chart Area (Expanded) -->
+             <div class="w-full">
+                <div class="chart-container h-[380px]">
+                    <canvas id="geoChart"></canvas>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <!-- Women's Month Signature Section -->
+    <section class="mb-12">
+        <div class="womens-month-gradient rounded-[2.5rem] shadow-2xl shadow-indigo-200 overflow-hidden text-white border border-white/20">
+            <div class="p-8 md:p-12">
+                <div class="flex flex-col xl:flex-row gap-12">
+                    <!-- Text and Highlights -->
+                    <div class="xl:w-2/5">
+                        <div class="inline-flex items-center bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30 mb-8">
+                            <span class="w-2 h-2 bg-orange-400 rounded-full animate-pulse mr-2"></span>
+                            <span class="text-xs font-black uppercase tracking-widest">NWM 2026 Core Focus</span>
+                        </div>
+                        
+                        <h2 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">National <br/><span class="text-orange-300">Women's Month</span></h2>
+                        <p class="text-indigo-100 text-lg mb-10 leading-relaxed font-medium">
+                            A cornerstone of Q1 2026, delivering gender-responsive ICT modules designed to empower women in digital spaces and the modern workforce.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-6 mb-10">
+                            <div class="bg-white/10 p-5 rounded-3xl border border-white/10">
+                                <p class="text-white/60 text-xs font-bold uppercase mb-1">Topics Covered</p>
+                                <span class="text-3xl font-black">38</span>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-3xl border border-white/10">
+                                <p class="text-white/60 text-xs font-bold uppercase mb-1">Total Participants</p>
+                                <span class="text-3xl font-black">3,657</span>
+                            </div>
+                        </div>
+
+                        <!-- Mini Gender Chart Simulation -->
+                        <div class="bg-indigo-900/40 p-6 rounded-3xl border border-indigo-400/20 backdrop-blur-sm">
+                            <div class="flex justify-between items-end mb-4">
+                                <div>
+                                    <h5 class="text-xs font-bold text-indigo-300 uppercase tracking-tighter">Attendance Demographics</h5>
+                                    <p class="text-sm font-medium mt-1">Female Participant Ratio</p>
+                                </div>
+                                <span class="text-2xl font-black text-orange-400">57%</span>
+                            </div>
+                            <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden">
+                                <div class="bg-orange-400 h-full rounded-full" style="width: 57%"></div>
+                            </div>
+                            <div class="mt-4 flex space-x-6">
+                                <div class="flex items-center text-xs">
+                                    <span class="w-2 h-2 bg-orange-400 rounded-full mr-2"></span> 2,082 Female
+                                </div>
+                                <div class="flex items-center text-xs">
+                                    <span class="w-2 h-2 bg-white rounded-full mr-2"></span> 1,575 Male
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scrollable Topic List -->
+                    <div class="xl:w-3/5">
+                        <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-md h-full">
+                            <div class="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
+                                <h3 class="font-bold text-xl flex items-center">
+                                    <svg class="w-6 h-6 mr-3 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                    Project Training Modules
+                                </h3>
+                                <span class="text-xs font-bold px-3 py-1 bg-white/10 rounded-full">Active Learning Streams</span>
+                            </div>
+                            
+                            <div class="h-[450px] overflow-y-auto pr-4 custom-scrollbar">
+                                <div class="grid grid-cols-1 md:grid-cols-1 gap-3" id="topic-list">
+                                    <!-- Populated via script -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secondary Insights -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="card-glass rounded-3xl p-8">
+            <h4 class="font-bold text-slate-800 mb-8 flex items-center">
+                <span class="w-2 h-2 bg-highlight rounded-full mr-2" style="background: #06B6D4;"></span> Beneficiary Sector Split
+            </h4>
+            <div class="chart-container">
+                <canvas id="sectorChart"></canvas>
+            </div>
+            <!-- Vulnerable Group Breakdown -->
+            <div class="mt-6 p-5 bg-cyan-50/50 rounded-2xl border border-cyan-100/50">
+                <div class="flex items-center justify-between mb-3">
+                    <p class="text-[10px] font-black text-cyan-700 uppercase tracking-widest">Identified Vulnerable Group (316 Participants)</p>
+                    <span class="text-[10px] bg-cyan-600 text-white px-2 py-0.5 rounded-lg font-bold">Q1 2026 Audit</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="flex flex-col p-2 bg-white/60 rounded-xl border border-cyan-100">
+                        <div class="flex items-center text-xs font-bold text-slate-700 mb-1">
+                            <span class="w-2 h-2 bg-cyan-500 rounded-full mr-2"></span> PDLs (BJMP)
+                        </div>
+                        <p class="text-[10px] text-slate-500 leading-tight">Masbate City & San Andres: <span class="font-black text-cyan-600">39 Participants</span></p>
+                    </div>
+                    <div class="flex flex-col p-2 bg-white/60 rounded-xl border border-cyan-100">
+                        <div class="flex items-center text-xs font-bold text-slate-700 mb-1">
+                            <span class="w-2 h-2 bg-cyan-500 rounded-full mr-2"></span> ALS Students
+                        </div>
+                        <p class="text-[10px] text-slate-500 leading-tight">Mabato & Siay centers: <span class="font-black text-cyan-600">25 Participants</span></p>
+                    </div>
+                    <div class="flex flex-col p-2 bg-white/60 rounded-xl border border-cyan-100">
+                        <div class="flex items-center text-xs font-bold text-slate-700 mb-1">
+                            <span class="w-2 h-2 bg-cyan-500 rounded-full mr-2"></span> Agrarian Reform (ARBs)
+                        </div>
+                        <p class="text-[10px] text-slate-500 leading-tight">Empowerment through Marketing: <span class="font-black text-cyan-600">242 Participants</span></p>
+                    </div>
+                    <div class="flex flex-col p-2 bg-white/60 rounded-xl border border-cyan-100">
+                        <div class="flex items-center text-xs font-bold text-slate-700 mb-1">
+                            <span class="w-2 h-2 bg-cyan-500 rounded-full mr-2"></span> Senior Citizens
+                        </div>
+                        <p class="text-[10px] text-slate-500 leading-tight">Digital inclusion focus: <span class="font-black text-cyan-600">10 Participants</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-glass rounded-3xl p-8">
+            <h4 class="font-bold text-slate-800 mb-8 flex items-center">
+                <span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span> Key Category Performance
+            </h4>
+            <div class="chart-container">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="mt-20 py-10 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <p class="text-slate-400 text-sm font-bold uppercase tracking-widest">2026 Quarterly Accomplishment of ILCDB Project</p>
+        <p class="text-slate-500 text-xs mt-2">© 2026 Department of Information and Communications Technology | Bicol Regional Office</p>
+    </div>
+</footer>
+
+<script>
+// Data Initialization
+const topics = [
+    "Smart Social Media Marketing: empowerHER & AI Integration",
+    "Graphics Design 101 using Canva",
+    "Demystifying Starlink: Connectivity in remote areas",
+    "Digital Literacy Training for PDLs (BJMP Masbate City)",
+    "3-Day Basic Digital Literacy (Word, Excel, PPT)",
+    "Google Sheets to Executive Dashboards: Looker Studio",
+    "Digital Safety for Educators: Protecting Students Online",
+    "Basic Computer Hardware, Networking and Troubleshooting",
+    "HerPrompting with Purpose: Basics of ChatGPT",
+    "Digital Literacy and Google Workspace for Teachers",
+    "Digital Literacy Training Masbate (Master Class)",
+    "Level Up Your Design Skills: Canva for Beginners",
+    "Design Faster, Work Smarter: Canva for AI Workforce",
+    "Excel Essentials: From Basics to Intermediate",
+    "Women Who Excel: MS Excel Fundamentals",
+    "Gender Fair AI Essentials: Work Smarter with AI",
+    "Marketing Trends for Agrarian Reform Beneficiaries",
+    "Digital Skills for Her Future: MS Word for Women PDL",
+    "Understanding Cybersecurity: Secure Digital World",
+    "Introduction to HTML and CSS for Beginners",
+    "Excel Basic and Intermediate (BJMP Officers)",
+    "Digital Literacy Training Tabaco City",
+    "Full Stack Development Training (Albay PO)",
+    "Rising Voices: AI & Cybersecurity Conversation",
+    "Navigating Google Workspace",
+    "Empowered to Automate: Workflow Automation",
+    "Resilience by Design: Data in Climate Analytics",
+    "Basic Orientation of Canva (DILG)",
+    "Digital Literacy Training Masbate (LGU San Jacinto)",
+    "Marketing and Digital Training (DTI Catanduanes)",
+    "EmpowerHer Online: Essential ICT Skills",
+    "The Art of Photo and Video Storytelling",
+    "Learn Networking Fundamentals: Build Skills",
+    "TikTok Affiliate & Cybersecurity (Basud NHS)",
+    "The Rise of Algorithmic Classroom (EdTech)",
+    "Driving Impact & Business Transformation",
+    "Protecting JUANA: Leading Safe Digital Spaces",
+    "Digital Skills for Her Future: MS Word (BJMP San Andres)"
+];
+
+const listContainer = document.getElementById('topic-list');
+topics.forEach((topic, index) => {
+    const item = document.createElement('div');
+    item.className = "group flex items-start p-3 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/5 transition-all duration-200 cursor-default";
+    item.innerHTML = `
+        <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-white/10 text-white text-[10px] font-black rounded-lg mr-4 border border-white/10 group-hover:bg-orange-500 group-hover:border-orange-400 transition-colors">
+            ${(index + 1).toString().padStart(2, '0')}
+        </span>
+        <span class="text-sm font-medium pt-1 text-white/90 group-hover:text-white">${topic}</span>
+    `;
+    listContainer.appendChild(item);
+});
+
+// Chart Configuration
+Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+Chart.defaults.color = '#64748b';
+
+const commonOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { 
+        legend: { 
+            position: 'bottom',
+            labels: { usePointStyle: true, padding: 20, font: { weight: '600', size: 11 } } 
+        } 
+    }
+};
+
+// Modality
+new Chart(document.getElementById('modalityChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Online Sessions', 'Face-to-Face Workshops'],
+        datasets: [{
+            data: [37, 23],
+            backgroundColor: ['#3B82F6', '#F97316'],
+            hoverOffset: 10,
+            borderWidth: 0
+        }]
+    },
+    options: { ...commonOptions, cutout: '75%' }
+});
+
+// Geo Bar
+const provinceData = [
+    { name: 'Catanduanes', count: 30, color: '#F43F5E' },
+    { name: 'Albay', count: 12, color: '#3B82F6' },
+    { name: 'Masbate', count: 7, color: '#8B5CF6' },
+    { name: 'Camarines Norte', count: 6, color: '#10B981' },
+    { name: 'Sorsogon', count: 4, color: '#F97316' },
+    { name: 'Camarines Sur', count: 1, color: '#1E3A8A' }
+];
+
+new Chart(document.getElementById('geoChart'), {
+    type: 'bar',
+    data: {
+        labels: provinceData.map(p => `${p.name} (${p.count})`),
+        datasets: [{
+            label: 'Total Sessions Conducted',
+            data: provinceData.map(p => p.count),
+            backgroundColor: provinceData.map(p => p.color),
+            borderRadius: 12,
+            barThickness: 40
+        }]
+    },
+    options: {
+        ...commonOptions,
+        scales: {
+            y: { 
+                beginAtZero: true, 
+                grid: { display: false },
+                ticks: { font: { weight: '700' } }
+            },
+            x: { 
+                grid: { display: false },
+                ticks: { 
+                    font: { size: 10, weight: '700' } 
+                }
+            }
+        },
+        plugins: { 
+            legend: { display: false },
+            datalabels: {
+                anchor: 'end',
+                align: 'top',
+                formatter: (value) => value,
+                font: { weight: 'bold' }
+            }
+        }
+    }
+});
+
+// Sector
+new Chart(document.getElementById('sectorChart'), {
+    type: 'pie',
+    data: {
+        labels: ['Gov Workforce', 'Education Sector', 'Vulnerable Groups'],
+        datasets: [{
+            data: [2433, 1622, 1351],
+            backgroundColor: ['#1E3A8A', '#3B82F6', '#06B6D4'],
+            borderWidth: 5,
+            borderColor: '#ffffff'
+        }]
+    },
+    options: commonOptions
+});
+
+// Category Performance (Updated)
+new Chart(document.getElementById('categoryChart'), {
+    type: 'bar',
+    data: {
+        labels: ["Women's Month", 'Digital Literacy', 'Cybersecurity'],
+        datasets: [{
+            label: 'Number of Participants',
+            data: [3657, 1176, 816],
+            backgroundColor: ['#A855F7', '#F97316', '#8B5CF6'],
+            borderRadius: 12,
+            barThickness: 60
+        }]
+    },
+    options: {
+        ...commonOptions,
+        scales: {
+            y: { 
+                beginAtZero: true, 
+                grid: { 
+                    color: 'rgba(0,0,0,0.05)',
+                    drawBorder: false
+                },
+                ticks: { 
+                    font: { weight: '700' },
+                    callback: (val) => val.toLocaleString()
+                }
+            },
+            x: { 
+                grid: { display: false },
+                ticks: { font: { weight: '700' } }
+            }
+        },
+        plugins: {
+            legend: { display: false },
+            datalabels: {
+                anchor: 'end',
+                align: 'top',
+                offset: 4,
+                font: { weight: '800', size: 12 },
+                color: '#1e293b',
+                formatter: (val) => val.toLocaleString()
+            }
+        }
+    },
+    plugins: [ChartDataLabels]
+});
+</script>
+</body>
+</html>
